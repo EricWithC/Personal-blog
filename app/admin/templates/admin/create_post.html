@@ -1,0 +1,51 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <div class="section">
+        <div class="container">
+            <h1 class="title is-1">Create a new post</h1>
+
+            <form action="" method="post">
+                {{ form.hidden_tag() }}
+                <div class="field">
+                    <label for="title" class="label">
+                        {{ form.title.label }}
+                    </label>
+                    <div class="control">
+                        {{ form.title(class='input') }}
+                    </div>
+                    {% for error in form.title.errors %}
+                        <p class="help is-danger">{{ error }}</p>
+                    {% endfor %}
+                </div>
+                <div class="field">
+                    <label for="body" class="label">
+                        {{ form.body.label }}
+                    </label>
+                    <div class="control">
+                        {{ form.body(class='textarea') }}
+                    </div>
+                    {% for error in form.body.errors %}
+                        <p class="help is-danger">{{ error }}</p>
+                    {% endfor %}
+                </div>
+                <div class="field">
+                    <label for="tags" class="label">
+                        {{ form.tags.label }}
+                    </label>
+                    <div class="control">
+                        {{ form.tags(size=form.tags.choices|length()) }}
+                    </div>
+                    {% for error in form.tags.errors %}
+                        <p class="help is-danger">{{ error }}</p>
+                    {% endfor %}
+                </div>
+                <div class="field">
+                    <div class="control">
+                        {{ form.submit(class='button') }}
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+{% endblock %}
